@@ -1,0 +1,29 @@
+{% extends 'schemat.html' %}
+
+{% block header %}
+  <h1>{% block title %}Tworzenie nowego postu{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <div class="form-group">
+          <label for="title">Tytuł</label>
+          <input name="title" class="form-control" id="title" value="{{ request.form['title'] }}" required>
+      </div>
+      <div class="form-group">
+          <label for="body">Treść</label>
+          <textarea name="body" class="form-control" id="body">{{ request.form['body'] }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Zapisz</button>
+      <br>
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+              <a href="/blog"><button type="button" class="btn btn-warning btn-block">
+            Anuluj
+          </button></a>
+            </div>
+          </div>
+  </form>
+{% endblock %}

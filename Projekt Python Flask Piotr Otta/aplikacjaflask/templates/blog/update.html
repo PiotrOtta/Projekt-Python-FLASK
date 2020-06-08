@@ -1,0 +1,33 @@
+{% extends 'schemat.html' %}
+
+{% block header %}
+  <h2>{% block title %}Edycja "{{ post['title'] }}"{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <div class="form-group">
+          <label for="title">Tytuł</label>
+          <input name="title" class="form-control" id="title" value="{{ request.form['title'] or post['title'] }}" required>
+      </div>
+      <div class="form-group">
+          <label for="body">Treść</label>
+          <textarea name="body" class="form-control" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+  </form>
+  <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+      <div class="container">
+          <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-danger btn-block">Usuń</button>
+            </div>
+            <div class="col">
+                <a href="/blog"><button type="button" class="btn btn-warning btn-block">
+                Anuluj
+                </button></a>
+            </div>
+          </div>
+      </div>
+  </form>
+{% endblock %}

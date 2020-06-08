@@ -1,0 +1,22 @@
+{% extends 'schemat.html' %}
+
+{% block header %}
+  <h2 class="display-4">{% block title %}O mnie{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+<p class="lead">Witryna stworzona przez Piotra Otta 18902,
+<br>
+    studia stacjonarne, inżynierskie, rok II, kierunek informatyka.
+</p>
+<style>
+    h2, p {
+        background:-webkit-gradient(linear,left top,right bottom,from(rgba(79, 116, 219, 0.9)),to(rgba(88, 207, 217, 0.9)));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .content {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+{% endblock %}

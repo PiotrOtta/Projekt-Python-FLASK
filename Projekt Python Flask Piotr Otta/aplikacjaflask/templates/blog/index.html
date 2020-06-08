@@ -1,0 +1,29 @@
+{% extends 'schemat.html' %}
+
+{% block header %}
+  <h1 class="text-center" id="posty">{% block title %}Posty{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('blog.create') }}">
+        <button type="button" class="btn btn-outline-primary">Utwórz nowy</button>
+    </a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="post shadow-sm p-3 mb-3 bg-white rounded">
+      <header>
+        <div>
+          <h1>{{ post['title'] }}</h1>
+          <div class="about">przez: {{ post['username'] }}<br>  dnia: {{ post['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == post['author_id'] %}
+          <a class="action badge badge-pill badge-info" href="{{ url_for('blog.update', id=post['id']) }}">Edytuj</a>
+        {% endif %}
+      </header>
+      <p class="body">{{ post['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+    {% endif %}
+  {% endfor %}
+{% endblock %}

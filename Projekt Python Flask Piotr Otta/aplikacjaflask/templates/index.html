@@ -1,0 +1,113 @@
+<!doctype html>
+
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Projekt HTML + Angular</title>
+    <meta name="description" content="Projekt HTML + Angular">
+    <meta name="author" content="PiotrOtta">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/images/ikona.png">
+    <script src="js/jquery-3.4.1.min.js"></script> 
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container" id="container1">
+        <header class="header">
+            <nav class="navbar justify-content-center">
+                <ul class="navbar-nav list-group-horizontal ">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#portfolio">PORTFOLIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#informacje">INFORMACJE</a>
+                </li>  
+                </ul>
+            </nav>
+        </header>
+        <div id="header_container" class="text-center">
+            <div id="header_logo">
+                <div id="scene" class="scene">
+                    <div data-depth="0.40">
+                        <img src="assets/images/Logo%20Codilion%20No%20BG%20-White.png" />
+                    </div>
+                </div>
+            </div>
+            <div id="header_text">
+                <h1 class="text-white">Projekt HTML + JS(Angular)</h1>
+                <h3>Wykonany przez Piotra Otta</h3>
+            </div>
+            
+        </div>
+        <div class="text-center" id="strzalka">
+            <a href="#portfolio"><img src="assets/images/strzalka.png" /></a>
+        </div>
+    </div>
+    <section ng-app="portfolioApp" ng-controller="GalleryListCtrl"  id="portfolio" class="container text-center">
+        <h2>Portfolio</h2>
+        <p>Sekcja strony poświęcona grafice oraz projektom wykonanym calkowicie przeze mnie.<br>
+        Zamieszone na stronie zostało: <span class="badge badge-pill badge-info">{{galleries.length}}</span> pozycji.</p>
+        <div class="row">
+            <div class="col-lg-6" ng-repeat="gallery in galleries">
+                <img id="zdjecie" class="img-fluid shadow" src="{{gallery.thumbnailUrl}}">
+                <h4 class="text-left shadow">{{gallery.title}}</h4>
+                <h6 class="text-right">{{gallery.category}}</h6>
+             </div>
+        </div>
+        
+    </section>
+    <section id="informacje" class="container text-center">
+    <h2>Informacje</h2>
+        <p>Strona zawiera implementacje:</p>
+        <div class="row">
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item active">Angular</li>
+                    <li class="list-group-item">elementy graficzne w portfolio,</li>
+                    <li class="list-group-item">ilość zamieszczonych pozycji.</li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item active">Parallax.js oraz javaskrypy</li>
+                    <li class="list-group-item">ruchome logo na samej górze strony - parallax,</li>
+                    <li class="list-group-item">płynne przewijanie - javaskrypt.</li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item active">Bootstrap oraz css</li>
+                    <li class="list-group-item">układ tabel oraz zdjęć,</li>
+                    <li class="list-group-item">cienie,</li>
+                    <li class="list-group-item">edycja tekstów,</li>
+                    <li class="list-group-item">znaczkek (ilość pozycji w porfolio),</li>
+                    <li class="list-group-item">animacja strzałki,</li>
+                    <li class="list-group-item">pasek nawigacji.</li>
+                </ul>
+            </div>
+        </div>
+        <a id="powrot" type="button" class="btn btn-outline-primary" href="#container1">Do góry strony</a>
+    </section>
+    <footer class="text-white">
+        <div class="footer-copyright text-center py-3">Wykonano: 28 kwietnia 2020r. | przez: Piotr Otta 18902
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/controllers.js"></script>
+	<script>
+	var scene = document.getElementById('scene');
+	var parallax = new Parallax(scene);
+    var scene1 = document.getElementById('scene1');
+	var parallax = new Parallax(scene1);
+	</script>
+</body>
+</html>

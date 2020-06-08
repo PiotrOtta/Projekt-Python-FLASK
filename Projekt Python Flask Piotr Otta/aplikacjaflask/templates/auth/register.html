@@ -1,0 +1,19 @@
+{% extends 'schemat.html' %}
+
+{% block header %}
+  <h1>{% block title %}Rejestracja{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <div class="form-group">
+          <label for="username">Login</label>
+          <input name="username" class="form-control" id="username" placeholder="Podaj login" required>
+      </div>
+      <div class="form-group">
+          <label for="password">Hasło</label>
+          <input type="password" name="password" class="form-control"  id="password" placeholder="Podaj hasło" required>
+      </div>
+      <button type="submit" class="btn btn-success">Zarejestruj się!</button>
+  </form>
+{% endblock %}

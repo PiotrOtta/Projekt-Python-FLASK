@@ -1,0 +1,29 @@
+{% extends 'schemat.html' %}
+
+{% block header %}
+{% endblock %}
+{% block content %}
+<style>
+    .content {
+        background-color: rgba(0, 255, 255, 0);
+    }
+</style>
+  <div id="header_container" class="text-center">
+            <div id="header_logo">
+                <div id="scene" class="scene">
+                    <div data-depth="0.60">
+                        <img  class="img-fluid"src="../../static/assets/Logo%20Codilion%20No%20BG%20-White.png">
+                    </div>
+                </div>
+            </div>
+            <div id="header_text">
+                <h1 class="text-white m-3">Projekt python + Flask</h1>
+                <h3>Wykonany przez Piotra Otta</h3>
+            </div>
+        </div>
+<script src="../../static/js/parallax.min.js"></script>
+<script>
+	var scene = document.getElementById('scene');
+	var parallax = new Parallax(scene);
+</script>
+{% endblock %}

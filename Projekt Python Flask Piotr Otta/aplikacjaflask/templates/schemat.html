@@ -1,0 +1,60 @@
+<!doctype html>
+<head>
+    <title>{% block title %}Strona główna{% endblock %} - Piotr Otta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="description" content="Projekt python - FLASK">
+    <meta name="author" content="PiotrOtta">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="{{ url_for('static', filename='assets/ikona.png') }} ">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar d-flex flex-row-reverse">
+        <ul class="navbar-nav list-group-horizontal ">
+            {% if g.user %}
+            <li class="nav-item">
+            <span class="badge badge-pill badge-primary">Zalogowano jako: {{ g.user['username'] }}</span>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('auth.logout') }}">Wyloguj się</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a href="{{ url_for('auth.login') }}">Zaloguj się</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+        <nav class="navbar justify-content-center">
+            <ul class="navbar-nav list-group-horizontal ">
+                    <li class="nav-item">
+                        <a href="{{ url_for('index') }}">GŁÓWNA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('home.omnie') }}">O MNIE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('blog.index') }}">BLOG</a>
+                    </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="d-flex justify-content-center">
+        <section class="content">
+        <h3>
+        {% block header %}{% endblock %}
+        </h3>
+            
+        {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+        </section>
+    </div>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+</body>
+
